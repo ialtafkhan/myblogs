@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {%extends 'base.html' %}
+
+{%block title%} Welcome to  {%endblock%}
+
+{%block content%}
+
+
+<div class="container-custom">
+
+
+    <!-- Set up your HTML -->
+    <div class="owl-carousel">
+
+
+        {% for cat in cats %}
+
+        <div class="card item" style= " max-height: 470px; margin-left:10px;">
+
+            <div class="img-container" >
+
+                <img src="/media/{{cat.image}}" style="max-height: 300px;width: 100%; object-fit:cover;"  class="responsive-img" alt="">
+
+            </div>
+            <div class="card-content" style=" max-width: 100%; width: 100%; ">
+
+                <div class="card-title">
+                    {{cat.title}}
+                </div>
+
+                <p class="truncate">{{cat.dscription}}</p>
+                <div class="container center-align mt20">
+                    <a href="/category/{{cat.url}}" class="btn bg-primary">VIEW</a>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        {%endfor%}
+
+    </div>
+
+
+</div>
+
+
+<div class="container " >
+
+    <div class="row" >
+
+        <div class="col s12 ">
+
+
+            {%for p in posts %}
+
+            <div class="row">
+
+                <div class="col s12 m8">
+
+
+                    {{p.content |truncatewords:60 | safe}}
+                    <div class="mt20">
+                        <a href="/blog/{{p.url}}" class="btn  bg-primary ">Read More..</a>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <img src="/media/{{p.image}}" class="responsive-img" style="margin-top:50px;">
+
+                </div>
+
+            </div>
+
+
+            {%endfor %}
+
+
+        </div>
+
+
+    </div>
+
+</div>
+{%endblock%}
+
+</body>
+</html>
